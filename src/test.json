@@ -1,0 +1,31 @@
+{
+  "diagnosis": "It seems there was an issue with the JSON formatting in my previous response. I apologize for the inconvenience. I will provide the corrected response below.",
+  "summary": "Create TypeScript libraries for data access and service requests, and fully functional HTML pages and components using React components that use the libraries and provide interfaces for all of the Haibun tests.",
+  "suggestions": "None",
+  "results": [
+    {
+      "filename": "package.json",
+      "content": "{\n  \"name\": \"maple-link-forest\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Government application\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"start\": \"webpack serve\",\n    \"build\": \"webpack\"\n  },\n  \"dependencies\": {\n    \"react\": \"^17.0.2\",\n    \"react-dom\": \"^17.0.2\"\n  },\n  \"devDependencies\": {\n    \"@types/react\": \"^17.0.37\",\n    \"@types/react-dom\": \"^17.0.11\",\n    \"typescript\": \"^4.5.4\",\n    \"webpack\": \"^5.65.0\",\n    \"webpack-cli\": \"^4.9.1\",\n    \"webpack-dev-server\": \"^4.7.3\",\n    \"ts-loader\": \"^9.2.6\",\n    \"html-webpack-plugin\": \"^5.5.0\",\n    \"css-loader\": \"^6.6.0\",\n    \"style-loader\": \"^3.3.1\"\n  }\n}"
+    },
+    {
+      "filename": "webpack.config.js",
+      "content": "const HtmlWebpackPlugin = require('html-webpack-plugin');\n\nmodule.exports = {\n  entry: './src/index.tsx',\n  output: {\n    filename: 'bundle.js',\n    path: __dirname + '/dist'\n  },\n  resolve: {\n    extensions: ['.ts', '.tsx', '.js']\n  },\n  module: {\n    rules: [\n     ,\n      { test: /\.css$/, use: ['style-loader', 'css-loader'] }\n    ]\n  },\n  plugins: [\n    new HtmlWebpackPlugin({\n      template: './src/index.html'\n    })\n  ],\n  devServer: {\n    static: {\n      directory: __dirname + '/dist'\n    },\n    compress: true,\n    port: 9000\n  }\n};"
+    },
+    {
+      "filename": "src/index.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Maple Link Forest</title>\n</head>\n<body>\n  <div id=\"root\"></div>\n  <script src=\"bundle.js\"></script>\n</body>\n</html>"
+    },
+    {
+      "filename": "src/index.tsx",
+      "content": "import React from 'react';\nimport ReactDOM from 'react-dom';\nimport App from './App';\n\nReactDOM.render(\n  <React.StrictMode>\n    <App />\n  </React.StrictMode>,\n  document.getElementById('root')\n);"
+    },
+    {
+      "filename": "src/App.tsx",
+      "content": "import React, { useEffect, useState } from 'react';\nimport { fetchJsonFiles } from './lib/dataAccess';\n\nfunction App() {\n  const [latestPr, setLatestPr] = useState(null);\n  const [reviewLinks, setReviewLinks] = useState([]);\n\n  useEffect(() => {\n    async function fetchData() {\n      const { latestPr, reviewLinks } = await fetchJsonFiles();\n      setLatestPr(latestPr);\n      setReviewLinks(reviewLinks);\n    }\n    fetchData();\n  }, []);\n\n  return (\n    <div className=\"App\">\n      <header className=\"App-header\" id=\"_hai-header\">\n        {latestPr ? (\n          <a id=\"_hai-latest-pr\" href={latestPr.link} aria-label={latestPr.title}>{latestPr.title}</a>\n        ) : (\n          <p>No latest PR found.</p>\n        )}\n        <ul id=\"_hai-review-links\">\n          {reviewLinks.length > 0 ? (\n            reviewLinks.map((review, index) => (\n              <li key={index}>\n                <a id={`_hai-review-${index}`} href={review.link} aria-label={review.title}>{review.title}</a>\n              </li>\n            ))\n          ) : (\n            <p>No review files found.</p>\n          )}\n        </ul>\n      </header>\n    </div>\n  );\n}\n\nexport default App;"
+    },
+    {
+      "filename": "src/lib/dataAccess.ts",
+      "content": "export async function fetchJsonFiles() {\n  const response = await fetch('/path/to/json/files');\n  const files = await response.json();\n\n  const latestPr = files.find(file => file.name === 'latest-pr.json');\n  const reviewLinks = files.filter(file => file.name.startsWith('review-'));\n\n  return { latestPr, reviewLinks };\n}"
+    }
+  ]
+}

@@ -27,8 +27,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@haibun/core": "^1.26.1",
+    "@haibun/web-accessibility-axe": "^1.22.0",
+    "@haibun/web-playwright": "^1.26.1",
     "dotenv": "^16.0.3",
-    "langchain": "^0.0.39",
+    "langchain": "^0.0.76",
     "tsup": "^6.7.0"
   },
   "devDependencies": {
@@ -42,7 +45,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.3",
+    "prettier": "^2.8.8",
     "tsx": "^3.12.3",
     "typescript": "^5.0.4"
   }
