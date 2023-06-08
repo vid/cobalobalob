@@ -64,7 +64,7 @@ async function go() {
 
   const appName = await getName([]);
 
-  const hai = new Haibot(overallTask, appName, s as unknown as AStepper, ['haibun-tests', 'web-frontend']);
+  const hai = new Haibot(overallTask, appName, s as unknown as AStepper, /*['haibun-tests', 'web-frontend']*/);
   const instructions = [hai.getBackground()];
 
   async function getName(names: string[]) {
