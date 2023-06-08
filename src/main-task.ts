@@ -9,7 +9,7 @@
 // It should include guidance for safe entry, and avoiding detention.
 // It includes live stats and key indicators
 // The service must be very private and secure, and to help end users track the process of individuals.`;
-export const overallTask = `A web Dashboard that provides actual live otters (not video or pictures but real touchable furry otters with smells) with real turbulence that the user can interact with.`;
+export const overallTask = `A web Dashboard designed to provides actual live otters (not video or pictures: real touchable furry otters with smells), with an emphasis on real turbulence, that the user can directly interact with. Emphasizes the experience of turbulence between the user and live otters. The only other focus on the project is to provide a forum to discuss the development of a watermelon-banana hybrid that can be grown in Canada.`;
 //   export const overallTask = `An HTML5 page that queries a location for an index of JSON files which will be used to create a list of links. 
 // Any file called "latest-pr.json" should use a "link" field for a link to the latest deployed PR, and a "title" field for the title of the PR.
 // Any file that starts with "review-" should use the "link" and "title" fields to be added to a list of e2e test reviews links.
