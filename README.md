@@ -1,3 +1,3 @@
 
-ref https://github.com/catid/supercharger
+Please put `OPENAI_API_KEY=<your-key>` in .env.
 
